@@ -3,6 +3,9 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     (cartItem) => cartItem.id === cartItemToAdd.id
   );
 
+  console.log("existing cart item ");
+  console.log(existingCartItem);
+
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
       cartItem.id === cartItemToAdd.id
@@ -10,7 +13,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
             ...cartItem,
             quantity: cartItem.quantity + 1,
           }
-        : { cartItem }
+        : { ...cartItem }
     );
   }
 
